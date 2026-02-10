@@ -1,6 +1,14 @@
+<script lang="ts">
+  import { page } from '$app/stores';
+</script>
+
 <svelte:head>
   <title>About — GreenStay Hub</title>
-  <meta name="description" content="GreenStay Hub exists to make sustainability the default in hospitality. Based in Fuengirola, Costa del Sol." />
+  <meta name="description" content="GreenStay Hub makes sustainability the default in hospitality. Based in Fuengirola, Costa del Sol." />
+  <meta property="og:title" content="About — GreenStay Hub" />
+  <meta property="og:description" content="Making sustainability the default in hospitality. Based in Fuengirola, Costa del Sol, Spain." />
+  <meta property="og:url" content="https://greenstayhub.com/{$page.params.lang}/about" />
+  <link rel="canonical" href="https://greenstayhub.com/{$page.params.lang}/about" />
 </svelte:head>
 
 <!-- HERO -->

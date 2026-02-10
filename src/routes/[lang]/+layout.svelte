@@ -5,6 +5,10 @@
   let { data, children } = $props();
 </script>
 
+<svelte:head>
+  {@html `<script>document.documentElement.lang = "${data.lang}";</script>`}
+</svelte:head>
+
 <Navbar lang={data.lang} />
 {@render children()}
 <Footer lang={data.lang} />
