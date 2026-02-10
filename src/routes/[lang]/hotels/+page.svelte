@@ -1,13 +1,15 @@
 <script lang="ts">
   import AnimatedNumber from '$lib/components/AnimatedNumber.svelte';
+  import { page } from '$app/stores';
 </script>
 
 <svelte:head>
   <title>For Hotels — GreenStay Hub</title>
-  <meta
-    name="description"
-    content="Zero-investment sustainability hub for your hotel. No upfront cost, no staff needed. ESG data included."
-  />
+  <meta name="description" content="Zero-investment sustainability hub for your hotel. No upfront cost, no staff needed. ESG data included." />
+  <meta property="og:title" content="For Hotels — GreenStay Hub" />
+  <meta property="og:description" content="Zero-investment sustainability amenity. We install, stock, maintain everything. You earn revenue from day one." />
+  <meta property="og:url" content="https://greenstayhub.com/{$page.params.lang}/hotels" />
+  <link rel="canonical" href="https://greenstayhub.com/{$page.params.lang}/hotels" />
 </svelte:head>
 
 <!-- HERO -->

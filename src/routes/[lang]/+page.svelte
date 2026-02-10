@@ -7,11 +7,12 @@
 </script>
 
 <svelte:head>
-  <title>GreenStay Hub — {t(lang, 'landing.title_1')} {t(lang, 'landing.title_2')}</title>
-  <meta
-    name="description"
-    content={t(lang, 'landing.subtitle')}
-  />
+  <title>GreenStay Hub — {t(lang, 'landing.badge')}</title>
+  <meta name="description" content={t(lang, 'landing.subtitle')} />
+  <meta property="og:title" content="GreenStay Hub — The Sustainability Hub for Hotels" />
+  <meta property="og:description" content="Responsible product rentals and sustainable essentials for hotels. Circular hospitality platform." />
+  <meta property="og:url" content="https://greenstayhub.com/{lang}/" />
+  <link rel="canonical" href="https://greenstayhub.com/{lang}/" />
 </svelte:head>
 
 <!-- HERO -->

@@ -44,6 +44,7 @@
       <div class="relative">
         <button
           class="px-3 py-1.5 rounded-md border border-gsh-green/10 text-[13px] text-gsh-light cursor-pointer font-body bg-transparent"
+          aria-label="Change language"
           onclick={() => (langMenuOpen = !langMenuOpen)}
         >
           {langLabels[lang] || 'EN'} 🌐

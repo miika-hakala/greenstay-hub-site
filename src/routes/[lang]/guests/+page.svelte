@@ -1,15 +1,17 @@
 <script lang="ts">
   import { rentalCategories, essentialCategories, bundles } from '$lib/data/products';
+  import { page } from '$app/stores';
 
   let activeTab = $state<'rentals' | 'essentials'>('rentals');
 </script>
 
 <svelte:head>
   <title>For Guests — GreenStay Hub</title>
-  <meta
-    name="description"
-    content="Quality EU-sourced products for your hotel stay. Rent what you need, buy essentials to keep. Fair prices, responsible model."
-  />
+  <meta name="description" content="Quality EU-sourced products for your hotel stay. Rent what you need, buy essentials to keep. Fair prices." />
+  <meta property="og:title" content="For Guests — GreenStay Hub" />
+  <meta property="og:description" content="Rent gear for your trip. Buy essentials to keep. Quality EU-sourced products at fair prices." />
+  <meta property="og:url" content="https://greenstayhub.com/{$page.params.lang}/guests" />
+  <link rel="canonical" href="https://greenstayhub.com/{$page.params.lang}/guests" />
 </svelte:head>
 
 <!-- HERO -->
