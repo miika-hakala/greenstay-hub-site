@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "hotels": "Hotels",
+    "guests": "Guests",
+    "investors": "Investors",
+    "about": "About"
+  },
+  "hero": {
+    "badge": "Circular Hospitality Platform",
+    "title_1": "The sustainability hub",
+    "title_2": "for hotels.",
+    "description": "Responsible product rentals and sustainable essentials, directly in hotel lobbies and common areas. Everything tracked, reused, recycled, or donated."
+  },
+  "how_it_works": {
+    "title": "How it works",
+    "subtitle": "Three steps. Zero complexity.",
+    "step_1_title": "Rent or Buy",
+    "step_1_desc": "Guest finds the hub in the lobby or on their floor. Rentals for the stay, essentials to keep.",
+    "step_2_title": "Use & Enjoy",
+    "step_2_desc": "Quality EU-sourced products. Beach gear, tech, hygiene — everything a guest needs.",
+    "step_3_title": "Return & Circulate",
+    "step_3_desc": "Rentals returned at checkout. Purchases yours to keep — optionally return packaging for recycling."
+  },
+  "circular_promise": {
+    "quote": "What we sell, we take care of.",
+    "tagline": "Reuse · Recycle · Donate responsibly",
+    "reuse": "Reuse",
+    "reuse_desc": "Products stay in circulation",
+    "recycle": "Recycle",
+    "recycle_desc": "Materials recovered at end-of-life",
+    "donate": "Donate",
+    "donate_desc": "100% of proceeds to NGOs"
+  },
+  "footer": {
+    "tagline": "The sustainability hub for hotels.",
+    "location": "Fuengirola, Costa del Sol, Spain.",
+    "platform": "Platform",
+    "company": "Company",
+    "language": "Language",
+    "contact": "Contact",
+    "promise": "Circular Promise",
+    "copyright": "© 2026 GreenStay Hub. All rights reserved.",
+    "motto": "What we sell, we take care of."
+  }
+}

@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-gsh-green: #1F7A63;
+  --color-gsh-blue: #2E8BC0;
+  --color-gsh-beige: #E6D8A2;
+  --color-gsh-off-white: #F4F7F5;
+  --color-gsh-dark: #1a2e28;
+  --color-gsh-light: #4a6b62;
+
+  --font-heading: 'DM Sans', sans-serif;
+  --font-body: 'Source Sans 3', sans-serif;
+}
