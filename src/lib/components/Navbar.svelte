@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { t, locales, type Locale } from '$lib/i18n';
-  import { page } from '$app/stores';
+  import { browser } from '$app/environment';
 
   let { lang = 'en' }: { lang?: string } = $props();
 
@@ -11,22 +11,17 @@
 
   const langLabels: Record<string, string> = { en: 'EN', es: 'ES', fi: 'FI' };
 
-  $effect(() => {
-    // Close mobile menu on navigation
-    mobileOpen = false;
-    langMenuOpen = false;
-  });
-
   onMount(() => {
     const handler = () => (scrolled = window.scrollY > 40);
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
   });
 
-  function getCurrentPath(): string {
-    const path = $page.url.pathname;
-    // Remove /en/, /es/, /fi/ prefix to get the page path
-    return path.replace(/^\/(en|es|fi)/, '') || '/';
+  function langSwitchHref(targetLang: string): string {
+    if (!browser) return `/${targetLang}/`;
+    const path = window.location.pathname;
+    const stripped = path.replace(/^\/(en|es|fi)/, '');
+    return `/${targetLang}${stripped || '/'}`;
   }
 </script>
 
@@ -65,7 +60,7 @@
           <div class="absolute right-0 mt-2 bg-white rounded-lg shadow-lg border border-gsh-green/10 overflow-hidden min-w-[80px]">
             {#each locales as loc}
               <a
-                href="/{loc}{getCurrentPath()}"
+                href={langSwitchHref(loc)}
                 class="block px-4 py-2 text-sm font-body no-underline {loc === lang ? 'text-gsh-green font-bold bg-gsh-green/5' : 'text-gsh-dark hover:bg-gsh-off-white'}"
                 onclick={() => (langMenuOpen = false)}
               >
@@ -102,7 +97,7 @@
       <div class="flex gap-3 mt-2">
         {#each locales as loc}
           <a
-            href="/{loc}{getCurrentPath()}"
+            href={langSwitchHref(loc)}
             class="px-3 py-1 rounded-md text-sm font-body no-underline {loc === lang ? 'bg-gsh-green text-white' : 'bg-gsh-off-white text-gsh-dark'}"
           >
             {langLabels[loc]}
