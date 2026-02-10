@@ -1,3 +1,11 @@
+<script lang="ts">
+  import { t, locales, type Locale } from '$lib/i18n';
+
+  let { lang = 'en' }: { lang?: string } = $props();
+
+  const langLabels: Record<string, string> = { en: 'English', es: 'Español', fi: 'Suomi' };
+</script>
+
 <footer class="pt-16 pb-8 px-6 bg-gsh-dark text-white">
   <div class="max-w-[1100px] mx-auto">
     <div class="flex flex-col md:flex-row justify-between flex-wrap gap-10 mb-12">
@@ -12,58 +20,63 @@
           <span class="font-heading font-bold text-base">GreenStay Hub</span>
         </div>
         <p class="font-body text-sm opacity-50 max-w-[280px] leading-relaxed">
-          The sustainability hub for hotels.<br />Fuengirola, Costa del Sol, Spain.
+          {t(lang as Locale, 'footer.tagline')}<br />{t(lang as Locale, 'footer.location')}
         </p>
       </div>
 
       <!-- Columns -->
       <div>
-        <div class="font-heading text-[13px] font-bold uppercase tracking-widest opacity-40 mb-4">Platform</div>
+        <div class="font-heading text-[13px] font-bold uppercase tracking-widest opacity-40 mb-4">{t(lang as Locale, 'footer.platform')}</div>
         <a
-          href="/en/hotels"
+          href="/{lang}/hotels"
           class="block font-body text-sm opacity-70 hover:opacity-100 mb-2.5 no-underline text-white"
         >
-          Hotels
+          {t(lang as Locale, 'nav.hotels')}
         </a>
         <a
-          href="/en/guests"
+          href="/{lang}/guests"
           class="block font-body text-sm opacity-70 hover:opacity-100 mb-2.5 no-underline text-white"
         >
-          Guests
+          {t(lang as Locale, 'nav.guests')}
         </a>
         <a
-          href="/en/investors"
+          href="/{lang}/investors"
           class="block font-body text-sm opacity-70 hover:opacity-100 mb-2.5 no-underline text-white"
         >
-          Investors
+          {t(lang as Locale, 'nav.investors')}
         </a>
       </div>
 
       <div>
-        <div class="font-heading text-[13px] font-bold uppercase tracking-widest opacity-40 mb-4">Company</div>
+        <div class="font-heading text-[13px] font-bold uppercase tracking-widest opacity-40 mb-4">{t(lang as Locale, 'footer.company')}</div>
         <a
-          href="/en/about"
+          href="/{lang}/about"
           class="block font-body text-sm opacity-70 hover:opacity-100 mb-2.5 no-underline text-white"
         >
-          About
+          {t(lang as Locale, 'nav.about')}
         </a>
-        <span class="block font-body text-sm opacity-70 mb-2.5 cursor-pointer">Contact</span>
-        <span class="block font-body text-sm opacity-70 mb-2.5 cursor-pointer">Circular Promise</span>
+        <span class="block font-body text-sm opacity-70 mb-2.5 cursor-pointer">{t(lang as Locale, 'footer.contact')}</span>
+        <span class="block font-body text-sm opacity-70 mb-2.5 cursor-pointer">{t(lang as Locale, 'footer.circular_promise')}</span>
       </div>
 
       <div>
-        <div class="font-heading text-[13px] font-bold uppercase tracking-widest opacity-40 mb-4">Language</div>
-        <span class="block font-body text-sm opacity-70 hover:opacity-100 mb-2.5 cursor-pointer">English</span>
-        <span class="block font-body text-sm opacity-70 hover:opacity-100 mb-2.5 cursor-pointer">Español</span>
-        <span class="block font-body text-sm opacity-70 hover:opacity-100 mb-2.5 cursor-pointer">Suomi</span>
+        <div class="font-heading text-[13px] font-bold uppercase tracking-widest opacity-40 mb-4">{t(lang as Locale, 'footer.language')}</div>
+        {#each locales as loc}
+          <a
+            href="/{loc}/"
+            class="block font-body text-sm opacity-70 hover:opacity-100 mb-2.5 no-underline text-white"
+          >
+            {langLabels[loc]}
+          </a>
+        {/each}
       </div>
     </div>
 
     <div
       class="border-t border-white/[0.08] pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 font-body text-[13px] opacity-40"
     >
-      <span>© 2026 GreenStay Hub. All rights reserved.</span>
-      <em>What we sell, we take care of.</em>
+      <span>{t(lang as Locale, 'footer.copyright')}</span>
+      <em>{t(lang as Locale, 'footer.promise')}</em>
     </div>
   </div>
 </footer>
