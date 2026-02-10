@@ -72,7 +72,7 @@
         class="px-6 py-2.5 rounded-full font-heading text-sm font-semibold transition-all {activeTab === 'rentals'
           ? 'bg-gsh-green text-white'
           : 'bg-gsh-off-white text-gsh-dark hover:bg-gsh-green/10'}"
-        on:click={() => (activeTab = 'rentals')}
+        onclick={() => (activeTab = 'rentals')}
       >
         🔄 Rentals ({rentalCategories.reduce((sum, c) => sum + c.products.length, 0)})
       </button>
@@ -80,7 +80,7 @@
         class="px-6 py-2.5 rounded-full font-heading text-sm font-semibold transition-all {activeTab === 'essentials'
           ? 'bg-gsh-blue text-white'
           : 'bg-gsh-off-white text-gsh-dark hover:bg-gsh-blue/10'}"
-        on:click={() => (activeTab = 'essentials')}
+        onclick={() => (activeTab = 'essentials')}
       >
         🛍️ Essentials ({essentialCategories.reduce((sum, c) => sum + c.products.length, 0)})
       </button>
