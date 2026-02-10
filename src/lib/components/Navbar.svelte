@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { t, locales, type Locale } from '$lib/i18n';
-  import { browser } from '$app/environment';
 
   let { lang = 'en' }: { lang?: string } = $props();
 
@@ -16,13 +15,6 @@
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
   });
-
-  function langSwitchHref(targetLang: string): string {
-    if (!browser) return `/${targetLang}/`;
-    const path = window.location.pathname;
-    const stripped = path.replace(/^\/(en|es|fi)/, '');
-    return `/${targetLang}${stripped || '/'}`;
-  }
 </script>
 
 <nav
@@ -60,7 +52,7 @@
           <div class="absolute right-0 mt-2 bg-white rounded-lg shadow-lg border border-gsh-green/10 overflow-hidden min-w-[80px]">
             {#each locales as loc}
               <a
-                href={langSwitchHref(loc)}
+                href="/{loc}/"
                 class="block px-4 py-2 text-sm font-body no-underline {loc === lang ? 'text-gsh-green font-bold bg-gsh-green/5' : 'text-gsh-dark hover:bg-gsh-off-white'}"
                 onclick={() => (langMenuOpen = false)}
               >
@@ -97,7 +89,7 @@
       <div class="flex gap-3 mt-2">
         {#each locales as loc}
           <a
-            href={langSwitchHref(loc)}
+            href="/{loc}/"
             class="px-3 py-1 rounded-md text-sm font-body no-underline {loc === lang ? 'bg-gsh-green text-white' : 'bg-gsh-off-white text-gsh-dark'}"
           >
             {langLabels[loc]}
