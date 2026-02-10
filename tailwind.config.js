@@ -1,6 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
+  safelist: [
+    'text-gsh-green',
+    'text-gsh-blue',
+    'text-gsh-dark',
+    'bg-gsh-green',
+    'bg-gsh-blue',
+    'bg-gsh-dark',
+    'from-gsh-green',
+    'from-gsh-blue',
+    'from-gsh-dark',
+    'to-gsh-green/40',
+    'to-gsh-blue/40',
+    'to-gsh-dark/40',
+    'bg-gsh-green/[0.06]',
+    'bg-gsh-blue/[0.06]',
+    'bg-gsh-dark/[0.06]'
+  ],
   theme: {
     extend: {
       colors: {
