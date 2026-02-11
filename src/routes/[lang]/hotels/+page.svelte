@@ -1,13 +1,16 @@
 <script lang="ts">
   import AnimatedNumber from '$lib/components/AnimatedNumber.svelte';
   import { page } from '$app/stores';
+  import { t } from '$lib/i18n';
+
+  $: lang = $page.params.lang;
 </script>
 
 <svelte:head>
-  <title>For Hotels — GreenStay Hub</title>
-  <meta name="description" content="Zero-investment sustainability hub for your hotel. No upfront cost, no staff needed. ESG data included." />
-  <meta property="og:title" content="For Hotels — GreenStay Hub" />
-  <meta property="og:description" content="Zero-investment sustainability amenity. We install, stock, maintain everything. You earn revenue from day one." />
+  <title>{t(lang, 'hotels.meta_title')}</title>
+  <meta name="description" content={t(lang, 'hotels.meta_description')} />
+  <meta property="og:title" content={t(lang, 'hotels.meta_title')} />
+  <meta property="og:description" content={t(lang, 'hotels.meta_description')} />
   <meta property="og:url" content="https://greenstayhub.com/{$page.params.lang}/hotels" />
   <link rel="canonical" href="https://greenstayhub.com/{$page.params.lang}/hotels" />
 </svelte:head>
@@ -24,21 +27,20 @@
     <div
       class="inline-block px-4 py-1.5 rounded-full bg-gsh-green/[0.06] text-gsh-green text-[13px] font-semibold font-heading tracking-[0.05em] uppercase mb-6"
     >
-      For Hotel Partners
+      {t(lang, 'hotels.hero_badge')}
     </div>
     <h1 class="font-heading text-[clamp(32px,5vw,56px)] font-extrabold leading-[1.1] tracking-tight mb-5">
-      Zero investment.<br />
-      <span class="text-gsh-green">Zero staff. Real ESG.</span>
+      {t(lang, 'hotels.hero_title_1')}<br />
+      <span class="text-gsh-green">{t(lang, 'hotels.hero_title_2')}</span>
     </h1>
     <p class="font-body text-[clamp(17px,2vw,20px)] text-gsh-light leading-relaxed max-w-[520px] mx-auto mb-10">
-      GreenStay Hub is a fully managed sustainability amenity. We install, stock, maintain, and operate everything.
-      You provide space — and earn revenue from day one.
+      {t(lang, 'hotels.hero_desc')}
     </p>
     <a
       href="#contact"
       class="inline-block px-8 py-4 rounded-[10px] bg-gsh-green text-white font-heading text-base font-semibold no-underline transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-gsh-green/25"
     >
-      Get in touch →
+      {t(lang, 'hotels.hero_cta')} →
     </a>
   </div>
 </section>
@@ -48,36 +50,36 @@
   <div class="max-w-[1100px] mx-auto">
     <div class="text-center mb-14">
       <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">
-        Why hotels say yes
+        {t(lang, 'hotels.pillars_title')}
       </h2>
-      <p class="font-body text-[17px] text-gsh-light">Four pillars. Zero barriers.</p>
+      <p class="font-body text-[17px] text-gsh-light">{t(lang, 'hotels.pillars_subtitle')}</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {#each [
         {
           icon: '💰',
-          title: 'Zero investment',
-          desc: 'No upfront cost. No hardware purchase. No inventory investment. GreenStay Hub covers installation, stocking, and all equipment.',
-          highlight: "You provide space. That's it."
+          title: t(lang, 'hotels.pillar1_title'),
+          desc: t(lang, 'hotels.pillar1_desc'),
+          highlight: t(lang, 'hotels.pillar1_highlight')
         },
         {
           icon: '👥',
-          title: 'Zero staff burden',
-          desc: 'We handle all restocking and maintenance. Product selection, pricing, and lifecycle management are fully managed.',
-          highlight: "You don't need to hire, train, or redirect anyone."
+          title: t(lang, 'hotels.pillar2_title'),
+          desc: t(lang, 'hotels.pillar2_desc'),
+          highlight: t(lang, 'hotels.pillar2_highlight')
         },
         {
           icon: '📊',
-          title: 'ESG & sustainability data',
-          desc: 'Every product is tracked through its lifecycle. You receive regular reports: products reused, kilograms recycled, donations generated.',
-          highlight: 'Ready for Green Key, EU Ecolabel, and CSRD reporting.'
+          title: t(lang, 'hotels.pillar3_title'),
+          desc: t(lang, 'hotels.pillar3_desc'),
+          highlight: t(lang, 'hotels.pillar3_highlight')
         },
         {
           icon: '⭐',
-          title: 'Better guest experience',
-          desc: 'Guests get quality EU-sourced products they actually need. Rentals mean they don’t buy things they’ll only use once.',
-          highlight: 'A thoughtful amenity, not a commercial add-on.'
+          title: t(lang, 'hotels.pillar4_title'),
+          desc: t(lang, 'hotels.pillar4_desc'),
+          highlight: t(lang, 'hotels.pillar4_highlight')
         }
       ] as pillar}
         <div
@@ -98,42 +100,42 @@
   <div class="max-w-[900px] mx-auto">
     <div class="text-center mb-14">
       <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">
-        From agreement to live in 1–2 weeks
+        {t(lang, 'hotels.timeline_title')}
       </h2>
-      <p class="font-body text-[17px] text-gsh-light">We handle the work. You enjoy the results.</p>
+      <p class="font-body text-[17px] text-gsh-light">{t(lang, 'hotels.timeline_subtitle')}</p>
     </div>
 
     <div class="space-y-0">
       {#each [
         {
           step: '1',
-          title: 'Site assessment',
-          duration: '1–2 hours',
-          desc: 'We visit your property to assess placement (lobby, floor areas), logistics access, and unit count.'
+          title: t(lang, 'hotels.step1_title'),
+          duration: t(lang, 'hotels.step1_duration'),
+          desc: t(lang, 'hotels.step1_desc')
         },
         {
           step: '2',
-          title: 'Agreement',
-          duration: '1–5 business days',
-          desc: 'We agree on placement, revenue model, restocking schedule, and terms.'
+          title: t(lang, 'hotels.step2_title'),
+          duration: t(lang, 'hotels.step2_duration'),
+          desc: t(lang, 'hotels.step2_desc')
         },
         {
           step: '3',
-          title: 'Delivery & installation',
-          duration: '1–3 days',
-          desc: 'Hub hardware delivered and installed. Initial stock loaded. 2–4 hours per hub unit.'
+          title: t(lang, 'hotels.step3_title'),
+          duration: t(lang, 'hotels.step3_duration'),
+          desc: t(lang, 'hotels.step3_desc')
         },
         {
           step: '4',
-          title: 'Staff briefing',
-          duration: '30–60 minutes',
-          desc: 'Short session for your team: what the hub is, how guests use it, and who to call if needed.'
+          title: t(lang, 'hotels.step4_title'),
+          duration: t(lang, 'hotels.step4_duration'),
+          desc: t(lang, 'hotels.step4_desc')
         },
         {
           step: '5',
-          title: 'Go live',
-          duration: 'Immediate',
-          desc: 'The hub is operational. Guests can rent and buy from day one.'
+          title: t(lang, 'hotels.step5_title'),
+          duration: t(lang, 'hotels.step5_duration'),
+          desc: t(lang, 'hotels.step5_desc')
         }
       ] as item, i}
         <div class="flex gap-6 items-start">
@@ -167,37 +169,36 @@
   <div class="max-w-[1000px] mx-auto">
     <div class="text-center mb-14">
       <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">
-        Revenue without risk
+        {t(lang, 'hotels.revenue_title')}
       </h2>
-      <p class="font-body text-[17px] text-gsh-light">You earn from a service you don't manage.</p>
+      <p class="font-body text-[17px] text-gsh-light">{t(lang, 'hotels.revenue_subtitle')}</p>
     </div>
 
     <!-- Two models -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
       <div class="p-8 rounded-2xl bg-gsh-off-white border border-gsh-green/[0.04]">
-        <h3 class="font-heading text-lg font-bold mb-3">Revenue share</h3>
+        <h3 class="font-heading text-lg font-bold mb-3">{t(lang, 'hotels.revenue_share_title')}</h3>
         <p class="font-body text-[15px] text-gsh-light leading-relaxed mb-3">
-          You receive 15–25% of all hub revenue generated at your property. Aligns your incentive with hub
-          performance.
+          {t(lang, 'hotels.revenue_share_desc')}
         </p>
-        <p class="font-body text-sm text-gsh-green font-semibold">Best for: hotels that want upside potential.</p>
+        <p class="font-body text-sm text-gsh-green font-semibold">{t(lang, 'hotels.revenue_share_best')}</p>
       </div>
       <div class="p-8 rounded-2xl bg-gsh-off-white border border-gsh-green/[0.04]">
-        <h3 class="font-heading text-lg font-bold mb-3">Fixed monthly fee</h3>
+        <h3 class="font-heading text-lg font-bold mb-3">{t(lang, 'hotels.fixed_fee_title')}</h3>
         <p class="font-body text-[15px] text-gsh-light leading-relaxed mb-3">
-          Predictable monthly payment regardless of performance. GreenStay Hub absorbs the volume risk.
+          {t(lang, 'hotels.fixed_fee_desc')}
         </p>
-        <p class="font-body text-sm text-gsh-green font-semibold">Best for: hotels that prefer budget certainty.</p>
+        <p class="font-body text-sm text-gsh-green font-semibold">{t(lang, 'hotels.fixed_fee_best')}</p>
       </div>
     </div>
 
     <!-- Key numbers -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       {#each [
-        { target: 1750, prefix: '€', suffix: '', label: 'Gross revenue / month' },
-        { target: 700, prefix: '€', suffix: '', label: 'Net contribution / month' },
-        { target: 0, prefix: '€', suffix: '', label: 'Hotel investment', display: '€0' },
-        { target: 3, prefix: '', suffix: '–5 mo', label: 'Payback period' }
+        { target: 1750, prefix: '€', suffix: '', label: t(lang, 'hotels.stat_gross') },
+        { target: 700, prefix: '€', suffix: '', label: t(lang, 'hotels.stat_net') },
+        { target: 0, prefix: '€', suffix: '', label: t(lang, 'hotels.stat_investment'), display: '€0' },
+        { target: 3, prefix: '', suffix: '–5 mo', label: t(lang, 'hotels.stat_payback') }
       ] as stat}
         <div class="text-center p-6 rounded-2xl bg-gsh-off-white">
           <div class="font-heading text-3xl md:text-4xl font-extrabold text-gsh-green tracking-tight leading-none mb-2">
@@ -213,8 +214,7 @@
     </div>
 
     <p class="text-center font-body text-sm text-gsh-light mt-6">
-      Based on a mid-sized hotel (80–150 rooms) on Costa del Sol. Figures are estimates — pilot data will replace
-      assumptions.
+      {t(lang, 'hotels.revenue_note')}
     </p>
   </div>
 </section>
@@ -224,10 +224,10 @@
   <div class="max-w-[900px] mx-auto">
     <div class="text-center mb-14">
       <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">
-        ESG reporting, ready to use
+        {t(lang, 'hotels.esg_title')}
       </h2>
       <p class="font-body text-[17px] text-gsh-light">
-        Measurable sustainability credentials without building your own programme.
+        {t(lang, 'hotels.esg_subtitle')}
       </p>
     </div>
 
@@ -235,18 +235,18 @@
       {#each [
         {
           icon: '🔄',
-          title: 'Product reuse',
-          metrics: ['Products returned', 'Return rate', 'Rental cycles per product', 'Products in circulation']
+          title: t(lang, 'hotels.esg_reuse_title'),
+          metrics: [t(lang, 'hotels.esg_reuse_m1'), t(lang, 'hotels.esg_reuse_m2'), t(lang, 'hotels.esg_reuse_m3'), t(lang, 'hotels.esg_reuse_m4')]
         },
         {
           icon: '♻️',
-          title: 'Material recycled',
-          metrics: ['Total material recycled (kg)', 'Electronics (WEEE-compliant)', 'Plastics recycled', 'Textiles recycled']
+          title: t(lang, 'hotels.esg_recycle_title'),
+          metrics: [t(lang, 'hotels.esg_recycle_m1'), t(lang, 'hotels.esg_recycle_m2'), t(lang, 'hotels.esg_recycle_m3'), t(lang, 'hotels.esg_recycle_m4')]
         },
         {
           icon: '💚',
-          title: 'Donations',
-          metrics: ['Products donated', 'Proceeds generated (€)', '100% transferred to NGOs', 'Partner organisations supported']
+          title: t(lang, 'hotels.esg_donate_title'),
+          metrics: [t(lang, 'hotels.esg_donate_m1'), t(lang, 'hotels.esg_donate_m2'), t(lang, 'hotels.esg_donate_m3'), t(lang, 'hotels.esg_donate_m4')]
         }
       ] as category}
         <div class="p-6 rounded-2xl bg-white border border-gsh-green/[0.04]">
@@ -266,9 +266,7 @@
 
     <div class="text-center p-6 rounded-2xl bg-white border border-gsh-green/[0.04]">
       <p class="font-body text-[15px] text-gsh-light leading-relaxed">
-        Reports are formatted for <strong class="text-gsh-dark">Green Key</strong>,
-        <strong class="text-gsh-dark">EU Ecolabel</strong>, and <strong class="text-gsh-dark">CSRD</strong> compliance.
-        Include them in your annual sustainability report, share with guests, or submit to certification bodies.
+        {t(lang, 'hotels.esg_note')}
       </p>
     </div>
   </div>
@@ -279,39 +277,39 @@
   <div class="max-w-[700px] mx-auto">
     <div class="text-center mb-14">
       <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight">
-        Common questions
+        {t(lang, 'hotels.faq_title')}
       </h2>
     </div>
 
     <div class="space-y-4">
       {#each [
         {
-          q: 'What does it cost the hotel?',
-          a: "Nothing. GreenStay Hub covers all hardware, installation, stock, and operations. The hotel provides space — that's all."
+          q: t(lang, 'hotels.faq1_q'),
+          a: t(lang, 'hotels.faq1_a')
         },
         {
-          q: 'Do we need to assign staff?',
-          a: 'No. We handle restocking, maintenance, returns, and guest support. Your staff receive a brief 30–60 minute orientation, but have no ongoing responsibilities.'
+          q: t(lang, 'hotels.faq2_q'),
+          a: t(lang, 'hotels.faq2_a')
         },
         {
-          q: 'Where is the hub placed?',
-          a: 'In the lobby and/or on each floor (max one unit per floor). Never in guest rooms. Exact placement is decided during the site assessment.'
+          q: t(lang, 'hotels.faq3_q'),
+          a: t(lang, 'hotels.faq3_a')
         },
         {
-          q: 'How does the revenue share work?',
-          a: 'You earn 15–25% of all hub revenue at your property, or a fixed monthly fee — whichever you prefer. Both models mean zero financial risk for the hotel.'
+          q: t(lang, 'hotels.faq4_q'),
+          a: t(lang, 'hotels.faq4_a')
         },
         {
-          q: "What happens if a guest doesn't return a rental?",
-          a: "The pre-agreed replacement cost is charged to the guest's room bill. The guest keeps the product. No follow-up, no friction."
+          q: t(lang, 'hotels.faq5_q'),
+          a: t(lang, 'hotels.faq5_a')
         },
         {
-          q: 'How does this help our ESG reporting?',
-          a: 'We track every product through its lifecycle and deliver periodic reports with reuse, recycling, and donation metrics — formatted for Green Key, EU Ecolabel, and CSRD submissions.'
+          q: t(lang, 'hotels.faq6_q'),
+          a: t(lang, 'hotels.faq6_a')
         },
         {
-          q: 'How long does installation take?',
-          a: 'From agreement to live in approximately 1–2 weeks. Physical installation takes 2–4 hours per hub unit.'
+          q: t(lang, 'hotels.faq7_q'),
+          a: t(lang, 'hotels.faq7_a')
         }
       ] as faq}
         <details class="group rounded-2xl bg-gsh-off-white border border-gsh-green/[0.04] overflow-hidden">
@@ -336,17 +334,17 @@
 >
   <div class="max-w-[600px] mx-auto">
     <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-4">
-      Ready to add GreenStay Hub?
+      {t(lang, 'hotels.cta_title')}
     </h2>
     <p class="font-body text-lg opacity-80 mb-8 leading-relaxed">
-      No investment. No risk. We'd love to show you how it works for your property.
+      {t(lang, 'hotels.cta_desc')}
     </p>
     <a
       href="mailto:hello@greenstayhub.com"
       class="inline-block px-8 py-4 rounded-[10px] bg-white text-gsh-green font-heading text-base font-semibold no-underline transition-all hover:-translate-y-0.5 hover:shadow-lg"
     >
-      Contact us →
+      {t(lang, 'hotels.cta_button')} →
     </a>
-    <p class="font-body text-sm opacity-60 mt-6">hello@greenstayhub.com · Fuengirola, Costa del Sol</p>
+    <p class="font-body text-sm opacity-60 mt-6">{t(lang, 'hotels.cta_footer')}</p>
   </div>
 </section>

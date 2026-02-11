@@ -1,12 +1,14 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import { t } from '$lib/i18n';
+  $: lang = $page.params.lang;
 </script>
 
 <svelte:head>
-  <title>About — GreenStay Hub</title>
-  <meta name="description" content="GreenStay Hub makes sustainability the default in hospitality. Based in Fuengirola, Costa del Sol." />
-  <meta property="og:title" content="About — GreenStay Hub" />
-  <meta property="og:description" content="Making sustainability the default in hospitality. Based in Fuengirola, Costa del Sol, Spain." />
+  <title>{t(lang, 'about.meta_title')}</title>
+  <meta name="description" content={t(lang, 'about.meta_description')} />
+  <meta property="og:title" content={t(lang, 'about.meta_title')} />
+  <meta property="og:description" content={t(lang, 'about.meta_og_description')} />
   <meta property="og:url" content="https://greenstayhub.com/{$page.params.lang}/about" />
   <link rel="canonical" href="https://greenstayhub.com/{$page.params.lang}/about" />
 </svelte:head>
@@ -20,11 +22,11 @@
 
   <div class="relative z-10 max-w-[640px]">
     <h1 class="font-heading text-[clamp(32px,5vw,52px)] font-extrabold leading-[1.1] tracking-tight mb-5">
-      Same comfort.<br />
-      <span class="text-gsh-green">Less waste.</span>
+      {t(lang, 'about.hero_title_1')}<br />
+      <span class="text-gsh-green">{t(lang, 'about.hero_title_2')}</span>
     </h1>
     <p class="font-body text-[clamp(17px,2vw,20px)] text-gsh-light leading-relaxed max-w-[500px] mx-auto">
-      GreenStay Hub exists to make sustainability the default in hospitality — not an upgrade, not a premium option, but the standard way hotels serve their guests.
+      {t(lang, 'about.hero_subtitle')}
     </p>
   </div>
 </section>
@@ -33,20 +35,20 @@
 <section class="py-20 px-6 bg-white">
   <div class="max-w-[700px] mx-auto">
     <h2 class="font-heading text-[clamp(28px,4vw,36px)] font-extrabold tracking-tight mb-6">
-      The idea
+      {t(lang, 'about.story_title')}
     </h2>
     <div class="space-y-5 font-body text-[16px] text-gsh-light leading-relaxed">
       <p>
-        Hotels generate enormous amounts of waste from single-use products that guests buy, use once, and leave behind. At the same time, guests increasingly want responsible options — but not at the expense of convenience.
+        {t(lang, 'about.story_p1')}
       </p>
       <p>
-        GreenStay Hub bridges this gap. We place compact hubs in hotel lobbies and common areas, offering high-quality rental products and curated essentials from European manufacturers. Guests get what they need. Hotels get a zero-investment amenity with real sustainability data. Products stay in circulation as long as possible.
+        {t(lang, 'about.story_p2')}
       </p>
       <p>
-        When a product reaches end-of-life, it's recycled through appropriate channels. When it's still functional but no longer rental-grade, it enters our donation stream — sold second-hand with 100% of proceeds going to environmental NGOs.
+        {t(lang, 'about.story_p3')}
       </p>
       <p>
-        Nothing is wasted. Nothing is forgotten.
+        {t(lang, 'about.story_p4')}
       </p>
     </div>
   </div>
@@ -57,7 +59,7 @@
   <div class="max-w-[900px] mx-auto">
     <div class="text-center mb-14">
       <h2 class="font-heading text-[clamp(28px,4vw,36px)] font-extrabold tracking-tight mb-3">
-        What we stand for
+        {t(lang, 'about.values_title')}
       </h2>
     </div>
 
@@ -65,23 +67,23 @@
       {#each [
         {
           icon: '🔄',
-          title: 'Circularity over disposal',
-          desc: 'Every product has a defined path: reuse, recycle, or donate. We follow the waste hierarchy — reuse first, dispose only as last resort.'
+          title: t(lang, 'about.values_circularity_title'),
+          desc: t(lang, 'about.values_circularity_desc')
         },
         {
           icon: '🚫',
-          title: 'No greenwashing',
-          desc: 'We don\'t claim 100% circularity. We track what we can measure and report honestly. No vague terms, no empty promises.'
+          title: t(lang, 'about.values_greenwashing_title'),
+          desc: t(lang, 'about.values_greenwashing_desc')
         },
         {
           icon: '🤝',
-          title: 'Guest choice, not guilt',
-          desc: 'Returns are convenient, never compulsory. Rentals are returned at checkout. Purchased items are yours — optional return for recycling only.'
+          title: t(lang, 'about.values_choice_title'),
+          desc: t(lang, 'about.values_choice_desc')
         },
         {
           icon: '🇪🇺',
-          title: 'European sourcing',
-          desc: 'All products come from Spanish or EU manufacturers. Shorter supply chains, higher standards, support for local economies.'
+          title: t(lang, 'about.values_sourcing_title'),
+          desc: t(lang, 'about.values_sourcing_desc')
         },
       ] as value}
         <div class="p-8 rounded-2xl bg-white border border-gsh-green/[0.04]">
@@ -104,14 +106,13 @@
       🌿
     </div>
     <h2 class="font-heading text-[clamp(26px,4vw,36px)] font-extrabold tracking-tight leading-tight mb-4">
-      "What we sell, we take care of."
+      {t(lang, 'about.promise_title')}
     </h2>
     <p class="text-base opacity-80 tracking-[0.12em] uppercase font-medium mb-6">
-      Reuse · Recycle · Donate responsibly
+      {t(lang, 'about.promise_subtitle')}
     </p>
     <p class="font-body text-[15px] opacity-70 leading-relaxed max-w-[480px] mx-auto">
-      This is our operational commitment. Every product that passes through GreenStay Hub has a defined lifecycle.
-      We track it, we report it, and we take responsibility for it.
+      {t(lang, 'about.promise_desc')}
     </p>
   </div>
 </section>
@@ -120,10 +121,10 @@
 <section class="py-20 px-6 bg-white">
   <div class="max-w-[700px] mx-auto text-center">
     <h2 class="font-heading text-[clamp(28px,4vw,36px)] font-extrabold tracking-tight mb-3">
-      Based in Costa del Sol
+      {t(lang, 'about.location_title')}
     </h2>
     <p class="font-body text-[17px] text-gsh-light mb-8 leading-relaxed">
-      Our pilot launches in Fuengirola, on Spain's Costa del Sol — one of Europe's most popular tourist destinations with over 300 days of sunshine per year.
+      {t(lang, 'about.location_subtitle')}
     </p>
 
     <!-- Map placeholder -->
@@ -136,12 +137,12 @@
         allowfullscreen
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        title="Fuengirola, Costa del Sol"
+        title={t(lang, 'about.location_map_title')}
       ></iframe>
     </div>
 
     <p class="font-body text-sm text-gsh-light">
-      Fuengirola, Málaga, Andalusia, Spain
+      {t(lang, 'about.location_name')}
     </p>
   </div>
 </section>
@@ -150,10 +151,10 @@
 <section id="contact" class="py-20 px-6 bg-gsh-off-white">
   <div class="max-w-[600px] mx-auto text-center">
     <h2 class="font-heading text-[clamp(28px,4vw,36px)] font-extrabold tracking-tight mb-4">
-      Get in touch
+      {t(lang, 'about.contact_title')}
     </h2>
     <p class="font-body text-[17px] text-gsh-light mb-10 leading-relaxed">
-      Whether you're a hotel, an investor, a potential partner, or simply curious — we'd love to hear from you.
+      {t(lang, 'about.contact_subtitle')}
     </p>
 
     <div class="space-y-4 mb-10">
@@ -161,8 +162,8 @@
         href="mailto:hello@greenstayhub.com"
         class="block p-5 rounded-2xl bg-white border border-gsh-green/[0.06] no-underline text-gsh-dark transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-gsh-green/[0.06]"
       >
-        <div class="font-heading text-base font-bold mb-1">📧 Email</div>
-        <div class="font-body text-[15px] text-gsh-green">hello@greenstayhub.com</div>
+        <div class="font-heading text-base font-bold mb-1">{t(lang, 'about.contact_email_label')}</div>
+        <div class="font-body text-[15px] text-gsh-green">{t(lang, 'about.contact_email_value')}</div>
       </a>
 
       <a
@@ -171,13 +172,13 @@
         rel="noopener noreferrer"
         class="block p-5 rounded-2xl bg-white border border-gsh-green/[0.06] no-underline text-gsh-dark transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-gsh-green/[0.06]"
       >
-        <div class="font-heading text-base font-bold mb-1">💼 LinkedIn</div>
-        <div class="font-body text-[15px] text-gsh-blue">GreenStay Hub</div>
+        <div class="font-heading text-base font-bold mb-1">{t(lang, 'about.contact_linkedin_label')}</div>
+        <div class="font-body text-[15px] text-gsh-blue">{t(lang, 'about.contact_linkedin_value')}</div>
       </a>
     </div>
 
     <p class="font-body text-sm text-gsh-light">
-      Fuengirola, Costa del Sol, Spain
+      {t(lang, 'about.contact_location')}
     </p>
   </div>
 </section>
