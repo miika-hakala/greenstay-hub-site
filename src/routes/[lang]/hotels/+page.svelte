@@ -14,6 +14,7 @@
   <meta property="og:url" content="https://greenstayhub.com/{$page.params.lang}/hotels" />
   <link rel="canonical" href="https://greenstayhub.com/{$page.params.lang}/hotels" />
 </svelte:head>
+<main>
 
 <!-- HERO -->
 <section
@@ -348,3 +349,4 @@
     <p class="font-body text-sm opacity-60 mt-6">{t(lang, 'hotels.cta_footer')}</p>
   </div>
 </section>
+</main>

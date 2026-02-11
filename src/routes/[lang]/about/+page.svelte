@@ -13,6 +13,7 @@
   <meta property="og:url" content="https://greenstayhub.com/{$page.params.lang}/about" />
   <link rel="canonical" href="https://greenstayhub.com/{$page.params.lang}/about" />
 </svelte:head>
+<main>
 
 <!-- HERO -->
 <section
@@ -183,3 +184,4 @@
     </p>
   </div>
 </section>
+</main>

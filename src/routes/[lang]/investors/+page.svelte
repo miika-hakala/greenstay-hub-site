@@ -14,6 +14,7 @@
   <meta property="og:url" content="https://greenstayhub.com/{$page.params.lang}/investors" />
   <link rel="canonical" href="https://greenstayhub.com/{$page.params.lang}/investors" />
 </svelte:head>
+<main>
 
 <!-- HERO -->
 <section
@@ -525,3 +526,4 @@
     <p class="font-body text-sm opacity-60 mt-6">{t(lang, 'investors.cta_contact')}</p>
   </div>
 </section>
+</main>

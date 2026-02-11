@@ -15,6 +15,7 @@
   <link rel="canonical" href="https://greenstayhub.com/{lang}/" />
 </svelte:head>
 
+<main>
 <!-- HERO -->
 <section
   class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-[120px] pb-20 relative overflow-hidden"
@@ -238,3 +239,4 @@
     </div>
   </div>
 </section>
+</main>

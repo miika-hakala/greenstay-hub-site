@@ -16,6 +16,7 @@
   <link rel="canonical" href="https://greenstayhub.com/{$page.params.lang}/guests" />
 </svelte:head>
 
+<main>
 <!-- HERO -->
 <section
   class="flex flex-col justify-center items-center text-center px-6 pt-[120px] pb-12 relative overflow-hidden"
@@ -44,13 +45,13 @@
   <div class="max-w-[800px] mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="p-6 rounded-2xl bg-gsh-green/[0.04] border border-gsh-green/[0.06]">
-        <h3 class="font-heading text-base font-bold text-gsh-green mb-2">🔄 {t(lang, 'guests.rentals_badge')}</h3>
+        <h2 class="font-heading text-base font-bold text-gsh-green mb-2">🔄 {t(lang, 'guests.rentals_badge')}</h2>
         <p class="font-body text-[15px] text-gsh-light leading-relaxed">
           {t(lang, 'guests.rentals_desc')}
         </p>
       </div>
       <div class="p-6 rounded-2xl bg-gsh-blue/[0.04] border border-gsh-blue/[0.06]">
-        <h3 class="font-heading text-base font-bold text-gsh-blue mb-2">🛍️ {t(lang, 'guests.essentials_badge')}</h3>
+        <h2 class="font-heading text-base font-bold text-gsh-blue mb-2">🛍️ {t(lang, 'guests.essentials_badge')}</h2>
         <p class="font-body text-[15px] text-gsh-light leading-relaxed">
           {t(lang, 'guests.essentials_desc')}
         </p>
@@ -223,3 +224,4 @@
     </p>
   </div>
 </section>
+</main>
