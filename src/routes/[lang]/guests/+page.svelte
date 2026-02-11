@@ -1,15 +1,17 @@
 <script lang="ts">
   import { rentalCategories, essentialCategories, bundles } from '$lib/data/products';
   import { page } from '$app/stores';
+  import { t } from '$lib/i18n';
 
   let activeTab = $state<'rentals' | 'essentials'>('rentals');
+  let lang = $derived($page.params.lang || 'en');
 </script>
 
 <svelte:head>
-  <title>For Guests — GreenStay Hub</title>
-  <meta name="description" content="Quality EU-sourced products for your hotel stay. Rent what you need, buy essentials to keep. Fair prices." />
-  <meta property="og:title" content="For Guests — GreenStay Hub" />
-  <meta property="og:description" content="Rent gear for your trip. Buy essentials to keep. Quality EU-sourced products at fair prices." />
+  <title>{t(lang, 'guests.meta_title')}</title>
+  <meta name="description" content={t(lang, 'guests.meta_description')} />
+  <meta property="og:title" content={t(lang, 'guests.meta_title')} />
+  <meta property="og:description" content={t(lang, 'guests.meta_description')} />
   <meta property="og:url" content="https://greenstayhub.com/{$page.params.lang}/guests" />
   <link rel="canonical" href="https://greenstayhub.com/{$page.params.lang}/guests" />
 </svelte:head>
@@ -25,15 +27,14 @@
     <div
       class="inline-block px-4 py-1.5 rounded-full bg-gsh-blue/[0.06] text-gsh-blue text-[13px] font-semibold font-heading tracking-[0.05em] uppercase mb-6"
     >
-      For Hotel Guests
+      {t(lang, 'guests.hero_badge')}
     </div>
     <h1 class="font-heading text-[clamp(30px,5vw,48px)] font-extrabold leading-[1.1] tracking-tight mb-5">
-      Everything you need<br />
-      <span class="text-gsh-blue">for your stay.</span>
+      {t(lang, 'guests.hero_title_1')}<br />
+      <span class="text-gsh-blue">{t(lang, 'guests.hero_title_2')}</span>
     </h1>
     <p class="font-body text-[clamp(16px,2vw,19px)] text-gsh-light leading-relaxed max-w-[480px] mx-auto">
-      Rent gear for your trip. Buy essentials to keep. Find us in the lobby or on your floor. Quality EU-sourced
-      products at fair prices.
+      {t(lang, 'guests.hero_desc')}
     </p>
   </div>
 </section>
@@ -43,18 +44,15 @@
   <div class="max-w-[800px] mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="p-6 rounded-2xl bg-gsh-green/[0.04] border border-gsh-green/[0.06]">
-        <h3 class="font-heading text-base font-bold text-gsh-green mb-2">🔄 Rentals</h3>
+        <h3 class="font-heading text-base font-bold text-gsh-green mb-2">🔄 {t(lang, 'guests.rentals_badge')}</h3>
         <p class="font-body text-[15px] text-gsh-light leading-relaxed">
-          Borrow for the duration of your stay. <strong class="text-gsh-dark">Return at checkout</strong> — via the
-          return slot or front desk. If you prefer to keep it, a replacement fee is charged to your room. No questions
-          asked.
+          {t(lang, 'guests.rentals_desc')}
         </p>
       </div>
       <div class="p-6 rounded-2xl bg-gsh-blue/[0.04] border border-gsh-blue/[0.06]">
-        <h3 class="font-heading text-base font-bold text-gsh-blue mb-2">🛍️ Essentials</h3>
+        <h3 class="font-heading text-base font-bold text-gsh-blue mb-2">🛍️ {t(lang, 'guests.essentials_badge')}</h3>
         <p class="font-body text-[15px] text-gsh-light leading-relaxed">
-          Purchase and <strong class="text-gsh-dark">keep</strong>. Yours to take home. If you'd like, drop the product
-          or packaging in the return slot — we'll recycle it responsibly. Completely optional.
+          {t(lang, 'guests.essentials_desc')}
         </p>
       </div>
     </div>
@@ -65,7 +63,7 @@
 <section class="py-16 px-6 bg-white">
   <div class="max-w-[1000px] mx-auto">
     <div class="text-center mb-10">
-      <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">Products</h2>
+      <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">{t(lang, 'guests.products_title')}</h2>
     </div>
 
     <!-- Tabs -->
@@ -76,7 +74,7 @@
           : 'bg-gsh-off-white text-gsh-dark hover:bg-gsh-green/10'}"
         onclick={() => (activeTab = 'rentals')}
       >
-        🔄 Rentals ({rentalCategories.reduce((sum, c) => sum + c.products.length, 0)})
+        🔄 {t(lang, 'guests.tab_rentals')} ({rentalCategories.reduce((sum, c) => sum + c.products.length, 0)})
       </button>
       <button
         class="px-6 py-2.5 rounded-full font-heading text-sm font-semibold transition-all {activeTab === 'essentials'
@@ -84,7 +82,7 @@
           : 'bg-gsh-off-white text-gsh-dark hover:bg-gsh-blue/10'}"
         onclick={() => (activeTab = 'essentials')}
       >
-        🛍️ Essentials ({essentialCategories.reduce((sum, c) => sum + c.products.length, 0)})
+        🛍️ {t(lang, 'guests.tab_essentials')} ({essentialCategories.reduce((sum, c) => sum + c.products.length, 0)})
       </button>
     </div>
 
@@ -103,7 +101,7 @@
                 >
                   <div>
                     <div class="font-body text-[15px] font-medium text-gsh-dark">{product.name}</div>
-                    <div class="font-body text-xs text-gsh-light mt-1">EU-sourced · Rental</div>
+                    <div class="font-body text-xs text-gsh-light mt-1">{t(lang, 'guests.label_eu_sourced')} · {t(lang, 'guests.label_rental')}</div>
                   </div>
                   <div class="font-heading text-sm font-bold text-gsh-green whitespace-nowrap">{product.price}</div>
                 </div>
@@ -129,7 +127,7 @@
                 >
                   <div>
                     <div class="font-body text-[15px] font-medium text-gsh-dark">{product.name}</div>
-                    <div class="font-body text-xs text-gsh-light mt-1">{product.origin} · Yours to keep</div>
+                    <div class="font-body text-xs text-gsh-light mt-1">{product.origin} · {t(lang, 'guests.label_yours_to_keep')}</div>
                   </div>
                   <div class="font-heading text-sm font-bold text-gsh-blue whitespace-nowrap">{product.price}</div>
                 </div>
@@ -141,7 +139,7 @@
     {/if}
 
     <p class="text-center font-body text-sm text-gsh-light mt-8">
-      All prices are indicative. Product availability may vary by season.
+      {t(lang, 'guests.products_note')}
     </p>
   </div>
 </section>
@@ -150,8 +148,8 @@
 <section class="py-16 px-6 bg-gsh-off-white">
   <div class="max-w-[1100px] mx-auto">
     <div class="text-center mb-10">
-      <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">Bundles</h2>
-      <p class="font-body text-[17px] text-gsh-light">Save money with pre-configured combinations.</p>
+      <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">{t(lang, 'guests.bundles_title')}</h2>
+      <p class="font-body text-[17px] text-gsh-light">{t(lang, 'guests.bundles_subtitle')}</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -174,7 +172,7 @@
                   {item.type === 'rental' ? '🔄' : '🛍️'}
                 </span>
                 <span class="text-gsh-dark">{item.name}</span>
-                <span class="text-xs text-gsh-light">({item.type === 'rental' ? 'rental' : 'keep'})</span>
+                <span class="text-xs text-gsh-light">({item.type === 'rental' ? t(lang, 'guests.label_rental_bundle') : t(lang, 'guests.label_keep_bundle')})</span>
               </div>
             {/each}
           </div>
@@ -188,28 +186,23 @@
 <section class="py-16 px-6 bg-white">
   <div class="max-w-[700px] mx-auto text-center">
     <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">
-      Returns made simple
+      {t(lang, 'guests.returns_title')}
     </h2>
     <p class="font-body text-[17px] text-gsh-light mb-10">
-      Find the return slot next to the hub in the lobby or on your floor, or drop items at the front desk.
+      {t(lang, 'guests.returns_desc')}
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left mb-10">
       <div class="p-6 rounded-2xl bg-gsh-green/[0.04] border border-gsh-green/[0.06]">
-        <h3 class="font-heading text-base font-bold text-gsh-green mb-3">Rented something?</h3>
-        <p class="font-body text-[15px] text-gsh-light leading-relaxed mb-3">
-          Return it at checkout via the return slot or front desk. That's all — no deposit needed.
-        </p>
-        <p class="font-body text-sm text-gsh-dark">
-          Prefer to keep it? A replacement fee is charged to your room. You keep the product, no follow-up.
+        <h3 class="font-heading text-base font-bold text-gsh-green mb-3">{t(lang, 'guests.returns_rentals_title')}</h3>
+        <p class="font-body text-[15px] text-gsh-light leading-relaxed">
+          {t(lang, 'guests.returns_rentals_desc')}
         </p>
       </div>
       <div class="p-6 rounded-2xl bg-gsh-blue/[0.04] border border-gsh-blue/[0.06]">
-        <h3 class="font-heading text-base font-bold text-gsh-blue mb-3">Bought something?</h3>
-        <p class="font-body text-[15px] text-gsh-light leading-relaxed mb-3">It's yours. Take it home, enjoy it.</p>
-        <p class="font-body text-sm text-gsh-dark">
-          If you'd like, drop the product or packaging in the return slot. We'll recycle or donate it responsibly.
-          Completely optional, completely appreciated.
+        <h3 class="font-heading text-base font-bold text-gsh-blue mb-3">{t(lang, 'guests.returns_essentials_title')}</h3>
+        <p class="font-body text-[15px] text-gsh-light leading-relaxed">
+          {t(lang, 'guests.returns_essentials_desc')}
         </p>
       </div>
     </div>
@@ -223,10 +216,10 @@
 >
   <div class="max-w-[500px] mx-auto">
     <h2 class="font-heading text-2xl font-extrabold tracking-tight mb-2">
-      "What we sell, we take care of."
+      "{t(lang, 'guests.promise_title')}"
     </h2>
     <p class="text-sm opacity-70 tracking-[0.12em] uppercase font-medium">
-      Reuse · Recycle · Donate responsibly
+      {t(lang, 'landing.promise_sub')}
     </p>
   </div>
 </section>

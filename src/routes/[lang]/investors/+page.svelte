@@ -1,13 +1,16 @@
 <script lang="ts">
   import AnimatedNumber from '$lib/components/AnimatedNumber.svelte';
   import { page } from '$app/stores';
+  import { t } from '$lib/i18n';
+
+  let lang = $derived($page.params.lang || 'en');
 </script>
 
 <svelte:head>
-  <title>For Investors — GreenStay Hub</title>
-  <meta name="description" content="Scalable circular hospitality platform. €700/month net per hotel, 3-5 month payback, EU market." />
-  <meta property="og:title" content="For Investors — GreenStay Hub" />
-  <meta property="og:description" content="Scalable circular hospitality platform targeting Europe's hotel market. Proven unit economics." />
+  <title>{t(lang, 'investors.meta_title')}</title>
+  <meta name="description" content={t(lang, 'investors.meta_description')} />
+  <meta property="og:title" content={t(lang, 'investors.meta_title')} />
+  <meta property="og:description" content={t(lang, 'investors.meta_og_description')} />
   <meta property="og:url" content="https://greenstayhub.com/{$page.params.lang}/investors" />
   <link rel="canonical" href="https://greenstayhub.com/{$page.params.lang}/investors" />
 </svelte:head>
@@ -24,28 +27,27 @@
     <div
       class="inline-block px-4 py-1.5 rounded-full bg-gsh-dark/[0.06] text-gsh-dark text-[13px] font-semibold font-heading tracking-[0.05em] uppercase mb-6"
     >
-      Investment Opportunity
+      {t(lang, 'investors.hero_badge')}
     </div>
     <h1 class="font-heading text-[clamp(32px,5vw,56px)] font-extrabold leading-[1.1] tracking-tight mb-5">
-      Scalable circular<br />
-      <span class="text-gsh-green">hospitality.</span>
+      {t(lang, 'investors.hero_title_1')}<br />
+      <span class="text-gsh-green">{t(lang, 'investors.hero_title_2')}</span>
     </h1>
     <p class="font-body text-[clamp(17px,2vw,20px)] text-gsh-light leading-relaxed max-w-[540px] mx-auto mb-10">
-      A dual-revenue platform embedded in Europe's hotel infrastructure. Zero-capex for hotels removes adoption
-      barriers. Circular operations create ESG value and reduce cost of goods.
+      {t(lang, 'investors.hero_subtitle')}
     </p>
     <div class="flex gap-4 justify-center flex-wrap">
       <a
         href="#unit-economics"
         class="px-7 py-3.5 rounded-[10px] bg-gsh-dark text-white font-heading text-[15px] font-semibold no-underline transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-gsh-dark/25"
       >
-        View financials →
+        {t(lang, 'investors.hero_cta_financials')}
       </a>
       <a
         href="mailto:hello@greenstayhub.com"
         class="px-7 py-3.5 rounded-[10px] border-2 border-gsh-dark/15 text-gsh-dark font-heading text-[15px] font-semibold no-underline transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-gsh-dark/12"
       >
-        Contact us →
+        {t(lang, 'investors.hero_cta_contact')}
       </a>
     </div>
   </div>
@@ -56,27 +58,27 @@
   <div class="max-w-[1000px] mx-auto">
     <div class="text-center mb-14">
       <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">
-        The concept
+        {t(lang, 'investors.concept_title')}
       </h2>
-      <p class="font-body text-[17px] text-gsh-light">A circular hospitality platform, not a vending machine.</p>
+      <p class="font-body text-[17px] text-gsh-light">{t(lang, 'investors.concept_subtitle')}</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {#each [
         {
           icon: '🏨',
-          title: 'What',
-          desc: 'Compact sustainability hubs placed in hotel lobbies and floor areas. Rental products (tech, beach gear) and curated essentials (hygiene, sun care) — all EU-sourced.'
+          title: t(lang, 'investors.concept_what_title'),
+          desc: t(lang, 'investors.concept_what_desc')
         },
         {
           icon: '⚙️',
-          title: 'How',
-          desc: 'Hotels provide space at zero cost. GreenStay Hub handles installation, stocking, maintenance, and circular operations. Hotels earn 15–25% revenue share.'
+          title: t(lang, 'investors.concept_how_title'),
+          desc: t(lang, 'investors.concept_how_desc')
         },
         {
           icon: '🌍',
-          title: 'Why now',
-          desc: 'EU CSRD 2026 requires sustainability reporting from large companies. Hotels need ESG data. Guests expect responsible options. The market is ready.'
+          title: t(lang, 'investors.concept_why_title'),
+          desc: t(lang, 'investors.concept_why_desc')
         }
       ] as item}
         <div class="p-8 rounded-2xl bg-gsh-off-white border border-gsh-green/[0.04]">
@@ -94,22 +96,35 @@
   <div class="max-w-[1000px] mx-auto">
     <div class="text-center mb-14">
       <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">
-        Unit economics
+        {t(lang, 'investors.economics_title')}
       </h2>
       <p class="font-body text-[17px] text-gsh-light">
-        Single hotel model — mid-sized property (80–150 rooms), Costa del Sol.
+        {t(lang, 'investors.economics_subtitle')}
       </p>
     </div>
 
     <!-- Revenue breakdown -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
       <div class="p-8 rounded-2xl bg-white border border-gsh-green/[0.04]">
-        <h3 class="font-heading text-lg font-bold mb-6">Monthly revenue</h3>
+        <h3 class="font-heading text-lg font-bold mb-6">{t(lang, 'investors.economics_revenue_title')}</h3>
         <div class="space-y-4">
           {#each [
-            { label: 'Rental revenue', value: '€630', detail: '100 rooms × 70% occ. × 15% conversion × €6 avg.' },
-            { label: 'Essentials revenue', value: '€1,120', detail: '100 rooms × 70% occ. × 25% conversion × €8 avg.' },
-            { label: 'Total gross revenue', value: '€1,750', detail: '', bold: true }
+            { 
+              label: t(lang, 'investors.economics_revenue_rentals'), 
+              value: t(lang, 'investors.economics_revenue_rentals_value'), 
+              detail: t(lang, 'investors.economics_revenue_rentals_detail')
+            },
+            { 
+              label: t(lang, 'investors.economics_revenue_essentials'), 
+              value: t(lang, 'investors.economics_revenue_essentials_value'), 
+              detail: t(lang, 'investors.economics_revenue_essentials_detail')
+            },
+            { 
+              label: t(lang, 'investors.economics_revenue_total'), 
+              value: t(lang, 'investors.economics_revenue_total_value'), 
+              detail: '', 
+              bold: true 
+            }
           ] as row}
             <div class="flex justify-between items-start {row.bold ? 'pt-3 border-t border-gsh-green/10' : ''}">
               <div>
@@ -129,14 +144,30 @@
       </div>
 
       <div class="p-8 rounded-2xl bg-white border border-gsh-green/[0.04]">
-        <h3 class="font-heading text-lg font-bold mb-6">Monthly costs</h3>
+        <h3 class="font-heading text-lg font-bold mb-6">{t(lang, 'investors.economics_costs_title')}</h3>
         <div class="space-y-4">
           {#each [
-            { label: 'Product cost (COGS)', value: '€450' },
-            { label: 'Rental depreciation & maintenance', value: '€100' },
-            { label: 'Restocking logistics', value: '€150' },
-            { label: 'Hotel revenue share (20%)', value: '€350' },
-            { label: 'Total costs', value: '€1,050', bold: true }
+            { 
+              label: t(lang, 'investors.economics_costs_cogs'), 
+              value: t(lang, 'investors.economics_costs_cogs_value')
+            },
+            { 
+              label: t(lang, 'investors.economics_costs_depreciation'), 
+              value: t(lang, 'investors.economics_costs_depreciation_value')
+            },
+            { 
+              label: t(lang, 'investors.economics_costs_logistics'), 
+              value: t(lang, 'investors.economics_costs_logistics_value')
+            },
+            { 
+              label: t(lang, 'investors.economics_costs_share'), 
+              value: t(lang, 'investors.economics_costs_share_value')
+            },
+            { 
+              label: t(lang, 'investors.economics_costs_total'), 
+              value: t(lang, 'investors.economics_costs_total_value'), 
+              bold: true 
+            }
           ] as row}
             <div class="flex justify-between items-center {row.bold ? 'pt-3 border-t border-gsh-green/10' : ''}">
               <div class="font-body text-[15px] {row.bold ? 'font-bold text-gsh-dark' : 'text-gsh-dark'}">
@@ -154,10 +185,10 @@
     <!-- Key metrics -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
       {#each [
-        { target: 700, prefix: '€', suffix: '', label: 'Net contribution / month' },
-        { target: 8400, prefix: '€', suffix: '', label: 'Annual per hotel' },
-        { target: 3, prefix: '', suffix: '–5 mo', label: 'Payback period' },
-        { target: 2000, prefix: '€', suffix: '–3k', label: 'Setup cost per hotel' }
+        { target: 700, prefix: '€', suffix: '', label: t(lang, 'investors.economics_metric_net') },
+        { target: 8400, prefix: '€', suffix: '', label: t(lang, 'investors.economics_metric_annual') },
+        { target: 3, prefix: '', suffix: '–5 mo', label: t(lang, 'investors.economics_metric_payback') },
+        { target: 2000, prefix: '€', suffix: '–3k', label: t(lang, 'investors.economics_metric_setup') }
       ] as stat}
         <div class="text-center p-6 rounded-2xl bg-white border border-gsh-green/[0.04]">
           <div class="font-heading text-3xl md:text-4xl font-extrabold text-gsh-green tracking-tight leading-none mb-2">
@@ -169,8 +200,7 @@
     </div>
 
     <p class="text-center font-body text-sm text-gsh-light">
-      All figures are estimates based on market research. Pilot data will replace these assumptions. Peak season
-      (May–Oct) could increase figures 30–50%.
+      {t(lang, 'investors.economics_disclaimer')}
     </p>
   </div>
 </section>
@@ -180,10 +210,10 @@
   <div class="max-w-[900px] mx-auto">
     <div class="text-center mb-14">
       <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">
-        Scaling projections
+        {t(lang, 'investors.scaling_title')}
       </h2>
       <p class="font-body text-[17px] text-gsh-light">
-        Linear economics. Each hotel adds €700/month net contribution.
+        {t(lang, 'investors.scaling_subtitle')}
       </p>
     </div>
 
@@ -191,9 +221,9 @@
       <table class="w-full text-left">
         <thead>
           <tr class="border-b-2 border-gsh-green/20">
-            <th class="font-heading text-sm font-bold text-gsh-dark py-4 pr-4">Hotels</th>
-            <th class="font-heading text-sm font-bold text-gsh-dark py-4 pr-4">Monthly net</th>
-            <th class="font-heading text-sm font-bold text-gsh-dark py-4">Annual net</th>
+            <th class="font-heading text-sm font-bold text-gsh-dark py-4 pr-4">{t(lang, 'investors.scaling_table_hotels')}</th>
+            <th class="font-heading text-sm font-bold text-gsh-dark py-4 pr-4">{t(lang, 'investors.scaling_table_monthly')}</th>
+            <th class="font-heading text-sm font-bold text-gsh-dark py-4">{t(lang, 'investors.scaling_table_annual')}</th>
           </tr>
         </thead>
         <tbody>
@@ -220,7 +250,7 @@
     </div>
 
     <p class="font-body text-sm text-gsh-light mt-6 text-center">
-      Assumes consistent hotel size and performance. Variation across properties and seasonal fluctuations will occur.
+      {t(lang, 'investors.scaling_disclaimer')}
     </p>
   </div>
 </section>
@@ -230,36 +260,36 @@
   <div class="max-w-[900px] mx-auto">
     <div class="text-center mb-14">
       <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">
-        Revenue streams
+        {t(lang, 'investors.revenue_title')}
       </h2>
-      <p class="font-body text-[17px] text-gsh-light">Dual revenue model with emerging ESG opportunity.</p>
+      <p class="font-body text-[17px] text-gsh-light">{t(lang, 'investors.revenue_subtitle')}</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {#each [
         {
-          title: 'Rentals',
-          share: '35–45%',
-          desc: 'Guests borrow reusable products (power banks, speakers, beach gear). High margins through multiple rental cycles per product.',
-          examples: 'Power bank €2/day · Speaker €3/day · Beach kit €5/day'
+          title: t(lang, 'investors.revenue_rentals_title'),
+          share: t(lang, 'investors.revenue_rentals_share'),
+          desc: t(lang, 'investors.revenue_rentals_desc'),
+          examples: t(lang, 'investors.revenue_rentals_examples')
         },
         {
-          title: 'Essentials',
-          share: '40–50%',
-          desc: 'Guests purchase everyday items (hygiene, sun care, adapters). Standard retail margin on EU-sourced goods. Fair pricing below hotel markup.',
-          examples: 'Sunscreen €8–12 · Charger €8–12 · Toothbrush kit €3–5'
+          title: t(lang, 'investors.revenue_essentials_title'),
+          share: t(lang, 'investors.revenue_essentials_share'),
+          desc: t(lang, 'investors.revenue_essentials_desc'),
+          examples: t(lang, 'investors.revenue_essentials_examples')
         },
         {
-          title: 'Bundles',
-          share: '10–15%',
-          desc: 'Pre-configured product combinations at a discount. Increase average transaction value and simplify guest decisions.',
-          examples: 'Beach Bundle €12 · Tech Bundle €10 · Essentials Bundle €8'
+          title: t(lang, 'investors.revenue_bundles_title'),
+          share: t(lang, 'investors.revenue_bundles_share'),
+          desc: t(lang, 'investors.revenue_bundles_desc'),
+          examples: t(lang, 'investors.revenue_bundles_examples')
         },
         {
-          title: 'ESG partnerships',
-          share: 'Emerging',
-          desc: 'Hotel chains pay for branded sustainability reporting. Circular economy credits. Co-investment in hub deployment.',
-          examples: 'Not active in pilot phase — part of long-term model'
+          title: t(lang, 'investors.revenue_esg_title'),
+          share: t(lang, 'investors.revenue_esg_share'),
+          desc: t(lang, 'investors.revenue_esg_desc'),
+          examples: t(lang, 'investors.revenue_esg_examples')
         }
       ] as stream}
         <div class="p-8 rounded-2xl bg-white border border-gsh-green/[0.04]">
@@ -284,18 +314,18 @@
 >
   <div class="max-w-[700px] mx-auto">
     <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-4">
-      Circular model
+      {t(lang, 'investors.circular_title')}
     </h2>
     <p class="font-body text-lg opacity-80 mb-10 leading-relaxed">
-      Every product has a defined lifecycle. Nothing is wasted.
+      {t(lang, 'investors.circular_subtitle')}
     </p>
 
     <!-- Flow -->
     <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 mb-10">
       {#each [
-        { icon: '📦', label: 'Buy & stock' },
-        { icon: '☀️', label: 'Guest uses' },
-        { icon: '🔄', label: 'Return' }
+        { icon: '📦', label: t(lang, 'investors.circular_step_buy') },
+        { icon: '☀️', label: t(lang, 'investors.circular_step_use') },
+        { icon: '🔄', label: t(lang, 'investors.circular_step_return') }
       ] as step, i}
         <div class="flex items-center gap-4 md:gap-6">
           <div class="text-center">
@@ -314,9 +344,21 @@
     <!-- Three streams -->
     <div class="flex justify-center gap-8 flex-wrap">
       {#each [
-        { icon: '🔄', title: 'Reuse', desc: 'Clean, check, recirculate' },
-        { icon: '♻️', title: 'Recycle', desc: 'Sort by material, WEEE-compliant' },
-        { icon: '💚', title: 'Donate', desc: '100% proceeds to NGOs' }
+        { 
+          icon: '🔄', 
+          title: t(lang, 'investors.circular_reuse_title'), 
+          desc: t(lang, 'investors.circular_reuse_desc')
+        },
+        { 
+          icon: '♻️', 
+          title: t(lang, 'investors.circular_recycle_title'), 
+          desc: t(lang, 'investors.circular_recycle_desc')
+        },
+        { 
+          icon: '💚', 
+          title: t(lang, 'investors.circular_donate_title'), 
+          desc: t(lang, 'investors.circular_donate_desc')
+        }
       ] as stream}
         <div class="text-center min-w-[130px]">
           <div class="text-[28px] mb-2">{stream.icon}</div>
@@ -333,10 +375,10 @@
   <div class="max-w-[900px] mx-auto">
     <div class="text-center mb-14">
       <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">
-        Roadmap
+        {t(lang, 'investors.roadmap_title')}
       </h2>
       <p class="font-body text-[17px] text-gsh-light">
-        Each phase gated by the success of the previous one. Data-driven, not assumption-driven.
+        {t(lang, 'investors.roadmap_subtitle')}
       </p>
     </div>
 
@@ -344,42 +386,42 @@
       {#each [
         {
           phase: '1',
-          title: 'Pilot',
-          scope: '1 hotel',
-          location: 'Fuengirola, Costa del Sol',
-          detail: 'Validate concept, prove unit economics, refine circular model. 6-month evaluation.',
+          title: t(lang, 'investors.roadmap_phase1_title'),
+          scope: t(lang, 'investors.roadmap_phase1_scope'),
+          location: t(lang, 'investors.roadmap_phase1_location'),
+          detail: t(lang, 'investors.roadmap_phase1_detail'),
           status: 'current'
         },
         {
           phase: '2',
-          title: 'Local expansion',
-          scope: '5–10 hotels',
-          location: 'Fuengirola area',
-          detail: 'Test logistics efficiency with multiple properties. Build local brand. Repeatable onboarding.',
+          title: t(lang, 'investors.roadmap_phase2_title'),
+          scope: t(lang, 'investors.roadmap_phase2_scope'),
+          location: t(lang, 'investors.roadmap_phase2_location'),
+          detail: t(lang, 'investors.roadmap_phase2_detail'),
           status: ''
         },
         {
           phase: '3',
-          title: 'Regional rollout',
-          scope: '20–50 hotels',
-          location: 'Costa del Sol',
-          detail: 'Prove model across hotel types and sizes. Regional logistics infrastructure. Hotel association relationships.',
+          title: t(lang, 'investors.roadmap_phase3_title'),
+          scope: t(lang, 'investors.roadmap_phase3_scope'),
+          location: t(lang, 'investors.roadmap_phase3_location'),
+          detail: t(lang, 'investors.roadmap_phase3_detail'),
           status: ''
         },
         {
           phase: '4',
-          title: 'Chain partnerships',
-          scope: '50–100+ hotels',
-          location: 'Spain + expanding',
-          detail: 'Multi-property agreements with hotel chains. Standardised offering. Central ESG dashboard.',
+          title: t(lang, 'investors.roadmap_phase4_title'),
+          scope: t(lang, 'investors.roadmap_phase4_scope'),
+          location: t(lang, 'investors.roadmap_phase4_location'),
+          detail: t(lang, 'investors.roadmap_phase4_detail'),
           status: ''
         },
         {
           phase: '5',
-          title: 'European expansion',
-          scope: '100+ hotels',
-          location: 'Mediterranean markets',
-          detail: 'Balearics, Canaries, Algarve, Greek islands, Italian coast, Croatia. Local suppliers and logistics.',
+          title: t(lang, 'investors.roadmap_phase5_title'),
+          scope: t(lang, 'investors.roadmap_phase5_scope'),
+          location: t(lang, 'investors.roadmap_phase5_location'),
+          detail: t(lang, 'investors.roadmap_phase5_detail'),
           status: ''
         }
       ] as item, i}
@@ -406,7 +448,7 @@
                 <span
                   class="font-heading text-[11px] font-bold text-white bg-gsh-green px-2 py-0.5 rounded-full uppercase tracking-wider"
                 >
-                  Current
+                  {t(lang, 'investors.roadmap_phase1_status')}
                 </span>
               {/if}
             </div>
@@ -419,8 +461,7 @@
 
     <div class="mt-8 p-6 rounded-2xl bg-gsh-off-white text-center">
       <p class="font-body text-sm text-gsh-light">
-        <strong class="text-gsh-dark">Timeline:</strong> Phase 2 starts 3–6 months after pilot. Phase 3 follows 6–12
-        months later. Phase 4 runs in parallel. Phase 5 begins 12–24 months after chain partnerships.
+        <strong class="text-gsh-dark">{t(lang, 'investors.roadmap_timeline_label')}</strong> {t(lang, 'investors.roadmap_timeline_text')}
       </p>
     </div>
   </div>
@@ -431,27 +472,27 @@
   <div class="max-w-[900px] mx-auto">
     <div class="text-center mb-14">
       <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-3">
-        Key economic levers
+        {t(lang, 'investors.levers_title')}
       </h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {#each [
         {
-          title: 'Rental cycle count',
-          desc: 'More rentals per product before end-of-life = higher margin. A power bank rented 50 times replaces 50 purchases.'
+          title: t(lang, 'investors.levers_rental_title'),
+          desc: t(lang, 'investors.levers_rental_desc')
         },
         {
-          title: 'Conversion rate',
-          desc: 'Small increases in guest adoption significantly impact revenue. 15% → 20% adds ~€200/month per hotel.'
+          title: t(lang, 'investors.levers_conversion_title'),
+          desc: t(lang, 'investors.levers_conversion_desc')
         },
         {
-          title: 'Bundle uptake',
-          desc: 'Bundles increase average transaction value with minimal additional cost. 10–15% of revenue at steady state.'
+          title: t(lang, 'investors.levers_bundle_title'),
+          desc: t(lang, 'investors.levers_bundle_desc')
         },
         {
-          title: 'Logistics efficiency',
-          desc: 'As hotel density increases in a region, restocking cost per hotel decreases. Route optimisation at scale.'
+          title: t(lang, 'investors.levers_logistics_title'),
+          desc: t(lang, 'investors.levers_logistics_desc')
         }
       ] as lever}
         <div class="p-6 rounded-2xl bg-white border border-gsh-green/[0.04]">
@@ -470,17 +511,17 @@
 >
   <div class="max-w-[600px] mx-auto">
     <h2 class="font-heading text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight mb-4">
-      Let's talk
+      {t(lang, 'investors.cta_title')}
     </h2>
     <p class="font-body text-lg opacity-80 mb-8 leading-relaxed">
-      We'd welcome the opportunity to share more detail on the model, the market, and the path ahead.
+      {t(lang, 'investors.cta_subtitle')}
     </p>
     <a
       href="mailto:hello@greenstayhub.com"
       class="inline-block px-8 py-4 rounded-[10px] bg-white text-gsh-dark font-heading text-base font-semibold no-underline transition-all hover:-translate-y-0.5 hover:shadow-lg"
     >
-      Contact us →
+      {t(lang, 'investors.cta_button')}
     </a>
-    <p class="font-body text-sm opacity-60 mt-6">hello@greenstayhub.com · Fuengirola, Costa del Sol</p>
+    <p class="font-body text-sm opacity-60 mt-6">{t(lang, 'investors.cta_contact')}</p>
   </div>
 </section>
