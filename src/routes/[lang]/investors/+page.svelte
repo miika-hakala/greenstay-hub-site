@@ -2,7 +2,9 @@
   import AnimatedNumber from '$lib/components/AnimatedNumber.svelte';
   import { page } from '$app/stores';
   import { t } from '$lib/i18n';
-  $: lang = $page.params.lang;
+
+  let lang: string;
+  $: lang = $page.params.lang || 'en';
 </script>
 
 <svelte:head>
