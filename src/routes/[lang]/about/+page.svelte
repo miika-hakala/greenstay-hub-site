@@ -2,8 +2,7 @@
   import { page } from '$app/stores';
   import { t } from '$lib/i18n';
 
-  let lang: string;
-  $: lang = $page.params.lang || 'en';
+  let lang = $derived($page.params.lang || 'en');
 </script>
 
 <svelte:head>

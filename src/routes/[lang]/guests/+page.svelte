@@ -4,8 +4,7 @@
   import { t } from '$lib/i18n';
 
   let activeTab = $state<'rentals' | 'essentials'>('rentals');
-  let lang: string;
-  $: lang = $page.params.lang || 'en';
+  let lang = $derived($page.params.lang || 'en');
 </script>
 
 <svelte:head>
